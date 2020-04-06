@@ -1,7 +1,7 @@
-name: "research"
+name: research
 output_dir: ../docs
 navbar:
-  title: "research"
+  title: research
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/DBomber60/research
 output:
   workflowr::wflow_html:
     toc: yes
