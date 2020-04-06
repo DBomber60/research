@@ -7,9 +7,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Introduction/ Motivation
 
-$\alpha$
+Suppose we have results from several experiments on the effect of the same drug. That is, for each of $J$ experiments, we have an estimated effect and standard error, $(y_j, \sigma_j)$. How should we combine these data into an overall effect estimate and what is the error of the overall effect?
+
 
 ```{r cars}
 summary(cars)
