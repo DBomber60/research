@@ -1,27 +1,47 @@
 ---
 title: "hierarchical"
+author: David Reynolds
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
 ```
 
-## Introduction/ Motivation
+## Motivating Question
 
-Suppose we have results from several experiments on the effect of the same drug. That is, for each of $J$ experiments, we have an estimated effect and standard error, $(y_j, \sigma_j)$. How should we combine these data into an overall effect estimate and what is the error of the overall effect?
+Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug's effect? What is the error of the estimate?
+
+To make this concrete, 
 
 
-```{r cars}
-summary(cars)
+```{r}
+experiment = LETTERS[1:8]
+effect = rnorm(8)
+df = data.frame(experiment = experiment, effect = effect)
+kable(df)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+### Option A
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Choose the best study. Clearly this is not optimal since you are not making use of the informatin you have; however, very smart people choose this option all the time. 
+
+### Option B
+
+Use some results from statistics class. 
+
+Our data then consists of $(\bar{y}_j, \sigma_j)$ for $j \in 1,...,J$, where $\bar{y}_j$ is the mean effect from experiment $j$, and $\sigma_j$ its standard error.
+
+Our simplest route is to assume that $\bar{y_j} \underset {iid}{\sim} N(\mu, \sigma_j)$, and to estimate $\mu$. Conceptually, this assumes that each experiment provides an independent estimate of the drug's *true* effect, $\mu$.
+
+Under this assumption, we can obtain an estimator $\hat{\mu}$ by maximizing the likelihood of our data.
+
+\begin{align}
+\hat{\mu} &= \underset{\mu}{\arg\max} \prod_j (2 \pi \sigma_j^2)^{-1/2} \exp \bigg(- \frac{( \bar{y}_j -\mu )^2 }{2 \sigma_j^2} \bigg) \\
+&= \frac{\sum_j \bar{y}_j/ \sigma_j^2 }{\sum_j 1/ \sigma_j^2}
+\end{align}
+
+This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common $\mu$. In statistician jargon, we would like to acknowledge the *unobserved heterogeneity* across groups (experiments).
