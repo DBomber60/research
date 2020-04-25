@@ -12,7 +12,7 @@
 <meta name="author" content="David Reynolds" />
 
 
-<title>hierarchical</title>
+<title>hierarchical modelling</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -385,7 +385,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">hierarchical</h1>
+<h1 class="title toc-ignore">hierarchical modelling</h1>
 <h4 class="author">David Reynolds</h4>
 
 </div>
@@ -393,7 +393,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -402,7 +402,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -411,10 +411,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-04-07
+<strong>Last updated:</strong> 2020-04-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>research/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -430,12 +430,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -502,16 +502,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree457280d837ce13b49701fc29c78a8dfd17f0990btargetblank457280da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/457280d837ce13b49701fc29c78a8dfd17f0990b" target="_blank">457280d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree5d743d6bbc06e45cd80314a439d2dad1ebc2d756targetblank5d743d6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/5d743d6bbc06e45cd80314a439d2dad1ebc2d756" target="_blank">5d743d6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree457280d837ce13b49701fc29c78a8dfd17f0990btargetblank457280da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree5d743d6bbc06e45cd80314a439d2dad1ebc2d756targetblank5d743d6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/457280d837ce13b49701fc29c78a8dfd17f0990b" target="_blank">457280d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/5d743d6bbc06e45cd80314a439d2dad1ebc2d756" target="_blank">5d743d6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -523,6 +523,9 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.Rhistory
+
+Unstaged changes:
+    Modified:   analysis/hierarchical.Rmd
 
 </code></pre>
 <p>
@@ -561,6 +564,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/DBomber60/research/5d743d6bbc06e45cd80314a439d2dad1ebc2d756/docs/hierarchical.html" target="_blank">5d743d6</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -690,50 +710,55 @@ test
 <div id="motivating-question" class="section level2">
 <h2>Motivating Question</h2>
 <p>Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug’s effect? What is the error of the estimate?</p>
-<p>To make this concrete,</p>
-<pre class="r"><code>experiment = LETTERS[1:8]
-effect = rnorm(8)
-df = data.frame(experiment = experiment, effect = effect)
-kable(df)</code></pre>
+<p>To make this concrete, let’s use the following data</p>
 <table>
 <thead>
 <tr class="header">
-<th align="left">experiment</th>
+<th align="left">drug</th>
 <th align="right">effect</th>
+<th align="right">sigma</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">A</td>
-<td align="right">-0.2790875</td>
+<td align="left">drug a</td>
+<td align="right">28</td>
+<td align="right">15</td>
 </tr>
 <tr class="even">
-<td align="left">B</td>
-<td align="right">-0.3475191</td>
+<td align="left">drug b</td>
+<td align="right">8</td>
+<td align="right">10</td>
 </tr>
 <tr class="odd">
-<td align="left">C</td>
-<td align="right">0.4515379</td>
+<td align="left">drug c</td>
+<td align="right">-3</td>
+<td align="right">16</td>
 </tr>
 <tr class="even">
-<td align="left">D</td>
-<td align="right">-0.5212846</td>
+<td align="left">drug d</td>
+<td align="right">7</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
-<td align="left">E</td>
-<td align="right">0.7675587</td>
+<td align="left">drug e</td>
+<td align="right">-1</td>
+<td align="right">9</td>
 </tr>
 <tr class="even">
-<td align="left">F</td>
-<td align="right">0.0071625</td>
+<td align="left">drug f</td>
+<td align="right">1</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
-<td align="left">G</td>
-<td align="right">-0.9345939</td>
+<td align="left">drug g</td>
+<td align="right">18</td>
+<td align="right">10</td>
 </tr>
 <tr class="even">
-<td align="left">H</td>
-<td align="right">-0.1729252</td>
+<td align="left">drug h</td>
+<td align="right">12</td>
+<td align="right">18</td>
 </tr>
 </tbody>
 </table>
@@ -744,14 +769,44 @@ kable(df)</code></pre>
 <div id="option-b" class="section level3">
 <h3>Option B</h3>
 <p>Use some results from statistics class.</p>
-<p>Our data then consists of <span class="math inline">\((\bar{y}_j, \sigma_j)\)</span> for <span class="math inline">\(j \in 1,...,J\)</span>, where <span class="math inline">\(\bar{y}_j\)</span> is the mean effect from experiment <span class="math inline">\(j\)</span>, and <span class="math inline">\(\sigma_j\)</span> its standard error.</p>
-<p>Our simplest route is to assume that <span class="math inline">\(\bar{y_j} \underset {iid}{\sim} N(\mu, \sigma_j)\)</span>, and to estimate <span class="math inline">\(\mu\)</span>. Conceptually, this assumes that each experiment provides an independent estimate of the drug’s <em>true</em> effect, <span class="math inline">\(\mu\)</span>.</p>
-<p>Under this assumption, we can obtain an estimator <span class="math inline">\(\hat{\mu}\)</span> by maximizing the likelihood of our data.</p>
+<p>Our data consists of <span class="math inline">\((\bar{y}_j, \sigma_j)\)</span> for <span class="math inline">\(j \in 1,...,J\)</span>, where <span class="math inline">\(\bar{y}_j\)</span> is the mean effect from experiment <span class="math inline">\(j\)</span>, and <span class="math inline">\(\sigma_j\)</span> its standard error. Let us consider the following two models,</p>
+<span class="math display">\[\begin{align}
+\text{Model 1: }\bar{y}_j &amp;\underset {ind}{\sim} N(\mu, \sigma_j) \\
+\text{Model 2: }\bar{y}_j &amp;\underset {ind}{\sim} N(\theta_j, \sigma_j)
+\end{align}\]</span>
+<p>Conceptually, this model assumes that each experiment provides an independent estimate of the drug’s <em>true</em> effect, <span class="math inline">\(\mu\)</span>.</p>
+<p>Under this model, we can obtain an estimator <span class="math inline">\(\hat{\mu}\)</span> by maximizing the likelihood of our data.</p>
 <span class="math display">\[\begin{align}
 \hat{\mu} &amp;= \underset{\mu}{\arg\max} \prod_j (2 \pi \sigma_j^2)^{-1/2} \exp \bigg(- \frac{( \bar{y}_j -\mu )^2 }{2 \sigma_j^2} \bigg) \\
 &amp;= \frac{\sum_j \bar{y}_j/ \sigma_j^2 }{\sum_j 1/ \sigma_j^2}
 \end{align}\]</span>
+<pre class="r"><code>sum(effect/sigma^2)/sum(1/sigma^2) # mu_hat</code></pre>
+<pre><code>[1] 7.685617</code></pre>
 <p>This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common <span class="math inline">\(\mu\)</span>. In statistician jargon, we would like to acknowledge the <em>unobserved heterogeneity</em> across groups (experiments).</p>
+<p>While we are uncomfortable treating the effect parameter estimated by each experiment as being exactly equal (<span class="math inline">\(\mu\)</span>), it also does not seem right to treat them as independent parameters, which would be the implied assumption under the following model,</p>
+<span class="math display">\[\begin{equation}
+\bar{y}_j \sim N(\theta_j, \sigma_j)
+\end{equation}\]</span>
+<p>.</p>
+<p>Is there a middle ground?</p>
+</div>
+<div id="option-c" class="section level3">
+<h3>Option C</h3>
+<p>Hierarchical modelling!</p>
+<p>The central idea of the hierarchical modeling is to use the data to model the strength of the dependency between group level parameters. The groups are assumed to be a sample from an underlying population distribution, and the variance of this population distribution, which is estimated from the data, determines how much the parameters of the sampling distribution are shrunk towards the common mean.</p>
+<span class="math display">\[\begin{align}
+\theta_j &amp;\sim N(\mu, \tau) \\
+\bar{y}_j &amp;\sim N(\theta_j, \sigma_j)
+\end{align}\]</span>
+<p>In order to make this hierarchical model a Bayesian hierarchical model, we also specify a prior distribution for the <strong>hyperparameters</strong>, <span class="math inline">\(p(\mu, \tau)\)</span>. A key conceptual difference between this model setup and those in Option B is the treatment of parameters <span class="math inline">\((\theta_1,...,\theta_J,\mu,\tau)\)</span> as random variables. This is the defining characteristic of Bayesian statistics. Despite the conceptual newness, this framework subsumes the previous two.</p>
+<span class="math display">\[\begin{align}
+p(\mu) &amp;\propto 1 \\
+\bar{y}_j &amp;\sim N(\mu, \sigma_j)
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+p(\theta_j) &amp;\propto 1 \text{ for } j \in \{1,...,J\} \\
+\bar{y}_j &amp;\sim N(\theta_j, \sigma_j)
+\end{align}\]</span>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -775,15 +830,16 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] knitr_1.27      workflowr_1.6.1
+[1] knitr_1.27
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.3      rprojroot_1.3-2 digest_0.6.23   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.5 git2r_0.26.1    magrittr_1.5   
- [9] evaluate_0.14   highr_0.8       stringi_1.4.5   rlang_0.4.4    
-[13] fs_1.3.1        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
-[17] tools_3.6.2     stringr_1.4.0   glue_1.3.1      httpuv_1.5.2   
-[21] xfun_0.12       yaml_2.2.0      compiler_3.6.2  htmltools_0.4.0</code></pre>
+ [1] workflowr_1.6.1 Rcpp_1.0.3      rprojroot_1.3-2 digest_0.6.23  
+ [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.26.1   
+ [9] magrittr_1.5    evaluate_0.14   highr_0.8       stringi_1.4.5  
+[13] rlang_0.4.4     fs_1.3.1        promises_1.1.0  whisker_0.4    
+[17] rmarkdown_2.1   tools_3.6.2     stringr_1.4.0   glue_1.3.1     
+[21] httpuv_1.5.2    xfun_0.12       yaml_2.2.0      compiler_3.6.2 
+[25] htmltools_0.4.0</code></pre>
 </div>
 </div>
 </div>
