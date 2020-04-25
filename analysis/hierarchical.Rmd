@@ -13,7 +13,7 @@ library(knitr)
 
 Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug's effect? What is the error of the estimate?
 
-To make this concrete, let's use the following data
+To make this concrete, let's use the following data set.
 
 
 ```{r, echo=FALSE}
