@@ -411,7 +411,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-04-25
+<strong>Last updated:</strong> 2020-04-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -502,16 +502,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreee5a3a25e463aff873eb07a1ca6331c56a81c9bb5targetblanke5a3a25a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/e5a3a25e463aff873eb07a1ca6331c56a81c9bb5" target="_blank">e5a3a25</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreee71bda3a7421611484bd4ee0dce8d2c32a97967ctargetblanke71bda3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/e71bda3a7421611484bd4ee0dce8d2c32a97967c" target="_blank">e71bda3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreee5a3a25e463aff873eb07a1ca6331c56a81c9bb5targetblanke5a3a25a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreee71bda3a7421611484bd4ee0dce8d2c32a97967ctargetblanke71bda3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/e5a3a25e463aff873eb07a1ca6331c56a81c9bb5" target="_blank">e5a3a25</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/e71bda3a7421611484bd4ee0dce8d2c32a97967c" target="_blank">e71bda3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -561,6 +561,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/DBomber60/research/blob/e71bda3a7421611484bd4ee0dce8d2c32a97967c/analysis/hierarchical.Rmd" target="_blank">e71bda3</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-27
+</td>
+<td>
+hi
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/DBomber60/research/b1febd3b43660257cbc65cbcc9bf325c962cf772/docs/hierarchical.html" target="_blank">b1febd3</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -758,7 +792,8 @@ test
 <div id="motivating-question" class="section level2">
 <h2>Motivating Question</h2>
 <p>Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug’s effect? What is the error of the estimate?</p>
-<p>To make this concrete, let’s use the following data set.</p>
+<p>This is a specific example of a much more general question: how do we use results of scientific research and incorporate it into our own research?</p>
+<p>To make this concrete, let us consider the following data set regarding the effect of a drug.</p>
 <table>
 <thead>
 <tr class="header">
@@ -769,42 +804,42 @@ test
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">drug a</td>
+<td align="left">Study a</td>
 <td align="right">28</td>
 <td align="right">15</td>
 </tr>
 <tr class="even">
-<td align="left">drug b</td>
+<td align="left">Study b</td>
 <td align="right">8</td>
 <td align="right">10</td>
 </tr>
 <tr class="odd">
-<td align="left">drug c</td>
+<td align="left">Study c</td>
 <td align="right">-3</td>
 <td align="right">16</td>
 </tr>
 <tr class="even">
-<td align="left">drug d</td>
+<td align="left">Study d</td>
 <td align="right">7</td>
 <td align="right">11</td>
 </tr>
 <tr class="odd">
-<td align="left">drug e</td>
+<td align="left">Study e</td>
 <td align="right">-1</td>
 <td align="right">9</td>
 </tr>
 <tr class="even">
-<td align="left">drug f</td>
+<td align="left">Study f</td>
 <td align="right">1</td>
 <td align="right">11</td>
 </tr>
 <tr class="odd">
-<td align="left">drug g</td>
+<td align="left">Study g</td>
 <td align="right">18</td>
 <td align="right">10</td>
 </tr>
 <tr class="even">
-<td align="left">drug h</td>
+<td align="left">Study h</td>
 <td align="right">12</td>
 <td align="right">18</td>
 </tr>
@@ -822,8 +857,7 @@ test
 \text{Model 1: }\bar{y}_j &amp;\underset {ind}{\sim} N(\mu, \sigma_j) \\
 \text{Model 2: }\bar{y}_j &amp;\underset {ind}{\sim} N(\theta_j, \sigma_j)
 \end{align}\]</span>
-<p>Conceptually, this model assumes that each experiment provides an independent estimate of the drug’s <em>true</em> effect, <span class="math inline">\(\mu\)</span>.</p>
-<p>Under this model, we can obtain an estimator <span class="math inline">\(\hat{\mu}\)</span> by maximizing the likelihood of our data.</p>
+<p>Conceptually, <strong>Model 1</strong> assumes that each experiment provides an independent estimate of the drug’s <em>true</em> effect, <span class="math inline">\(\mu\)</span>. Under this model, we can obtain an estimator <span class="math inline">\(\hat{\mu}\)</span> by maximizing the likelihood of our data.</p>
 <span class="math display">\[\begin{align}
 \hat{\mu} &amp;= \underset{\mu}{\arg\max} \prod_j (2 \pi \sigma_j^2)^{-1/2} \exp \bigg(- \frac{( \bar{y}_j -\mu )^2 }{2 \sigma_j^2} \bigg) \\
 &amp;= \frac{\sum_j \bar{y}_j/ \sigma_j^2 }{\sum_j 1/ \sigma_j^2}
@@ -831,20 +865,21 @@ test
 <pre class="r"><code>sum(effect/sigma^2)/sum(1/sigma^2) # mu_hat</code></pre>
 <pre><code>[1] 7.685617</code></pre>
 <p>This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common <span class="math inline">\(\mu\)</span>. In statistician jargon, we would like to acknowledge the <em>unobserved heterogeneity</em> across groups (experiments).</p>
-<p>While we are uncomfortable treating the effect parameter estimated by each experiment as being exactly equal (<span class="math inline">\(\mu\)</span>), it also does not seem right to treat them as independent parameters, which would be the implied assumption under the following model,</p>
-<span class="math display">\[\begin{equation}
-\bar{y}_j \sim N(\theta_j, \sigma_j)
-\end{equation}\]</span>
-<p>.</p>
+<p>While we are uncomfortable treating the effect parameter estimated by each experiment as being exactly equal (<span class="math inline">\(\mu\)</span>), it also does not seem right to treat them as independent parameters, which would be the implied assumption under the <strong>Model 2</strong>.</p>
+<p>To further illustrate the problems with these approaches, consider the following statements:</p>
+<ol style="list-style-type: decimal">
+<li>The probability that the true effect in A is greater than <span class="math inline">\(28.4\)</span> is <span class="math inline">\(1/2\)</span> (implied by <strong>Model 1</strong>).</li>
+<li>The probability that the true effect in A is less than <span class="math inline">\(7.7\)</span> is <span class="math inline">\(1/2\)</span> (implied by <strong>Model 2</strong>).</li>
+</ol>
 <p>Is there a middle ground?</p>
 </div>
 <div id="option-c" class="section level3">
 <h3>Option C</h3>
 <p>Hierarchical modelling!</p>
-<p>The central idea of the hierarchical modeling is to use the data to model the strength of the dependency between group level parameters. The groups are assumed to be a sample from an underlying population distribution, and the variance of this population distribution, which is estimated from the data, determines how much the parameters of the sampling distribution are shrunk towards the common mean.</p>
+<p>The idea is to break the model down into smaller easier understood pieces (levels), which when put together describes the joint distribution of all data and parameters. In this case, we can think about study level parameters on one level (i.e., we can denote <span class="math inline">\(\theta_j\)</span> as the true effect of study <span class="math inline">\(j\)</span>) and the the sampling distribution of the study-specific data on another level. Futhermore, we can assume the study parameters are a sample from an underlying population distribution, and the variance of this population distribution, which is estimated from the data, determines how much the parameters of the sampling distribution are shrunk towards the common mean.</p>
 <span class="math display">\[\begin{align}
 \theta_j &amp;\sim N(\mu, \tau) \\
-\bar{y}_j &amp;\sim N(\theta_j, \sigma_j)
+\bar{y}_j \vert \theta_j &amp;\sim N(\theta_j, \sigma_j)
 \end{align}\]</span>
 <p>In order to make this hierarchical model a Bayesian hierarchical model, we also specify a prior distribution for the <strong>hyperparameters</strong>, <span class="math inline">\(p(\mu, \tau)\)</span>. A key conceptual difference between this model setup and those in Option B is the treatment of parameters <span class="math inline">\((\theta_1,...,\theta_J,\mu,\tau)\)</span> as random variables. This is the defining characteristic of Bayesian statistics. Despite the conceptual newness, this framework subsumes the previous two.</p>
 <span class="math display">\[\begin{align}
