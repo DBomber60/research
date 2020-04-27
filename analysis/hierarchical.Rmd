@@ -1,12 +1,15 @@
 ---
 title: "hierarchical modelling"
-author: David Reynolds
-output: html_document
+author: "David Reynolds"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
+source('code/sampler.R')
 ```
 
 ## Motivating Question
@@ -19,6 +22,9 @@ To make this concrete, let us consider the following data set regarding the effe
 
 
 ```{r, echo=FALSE}
+
+print("yo")
+hi()
 data <- data.frame(
                 drug = paste('Study',letters[1:8]),
                 effect = c(28,  8, -3,  7, -1,  1, 18, 12), 
