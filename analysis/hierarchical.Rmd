@@ -8,9 +8,10 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 library(knitr)
-#source('../code/sampler.R')
-source('code/sampler.R')
+#source('../code/sampler.R') # for testing
+source('code/sampler.R') # for deploy
 ```
 
 ## Motivating Question
@@ -25,7 +26,7 @@ To make this concrete, let us consider the following data set regarding the effe
 ```{r, echo=FALSE}
 
 data <- data.frame(
-                drug = paste('Study',letters[1:8]),
+                Study = paste('Study',letters[1:8]),
                 effect = c(28,  8, -3,  7, -1,  1, 18, 12), 
                 sigma = c(15, 10, 16, 11,  9, 11, 10, 18))
 kable(data)
@@ -96,6 +97,8 @@ p(\theta_j) &\propto 1 \text{ for } j \in \{1,...,J\} \\
 \end{align}
 
 ```{r}
+
+ggplot(data, aes(Study, effect)) + geom_point()
 
 y = effect
 
