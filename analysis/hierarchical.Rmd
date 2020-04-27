@@ -9,6 +9,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
+#source('../code/sampler.R')
 source('code/sampler.R')
 ```
 
@@ -23,8 +24,6 @@ To make this concrete, let us consider the following data set regarding the effe
 
 ```{r, echo=FALSE}
 
-print("yo")
-hi()
 data <- data.frame(
                 drug = paste('Study',letters[1:8]),
                 effect = c(28,  8, -3,  7, -1,  1, 18, 12), 
@@ -58,6 +57,7 @@ Conceptually, **Model 1** assumes that each experiment provides an independent e
 
 ```{r}
 sum(effect/sigma^2)/sum(1/sigma^2) # mu_hat
+1/sum(1/sigma^2)
 ```
 
 This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common $\mu$. In statistician jargon, we would like to acknowledge the *unobserved heterogeneity* across groups (experiments).
@@ -95,7 +95,38 @@ p(\theta_j) &\propto 1 \text{ for } j \in \{1,...,J\} \\
 \bar{y}_j &\sim N(\theta_j, \sigma_j)
 \end{align}
 
+```{r}
 
+y = effect
+
+
+# gibbs sampler
+n_grid <- 2000
+tau_grid <- seq (.01, 40, length=n_grid)
+log_p_tau <- rep (NA, n_grid)
+
+for (i in 1:n_grid){
+  mu <- mu_hat (tau_grid[i], y, sigma)
+  V <- V_mu (tau_grid[i], y, sigma)
+  log_p_tau[i] = .5*log(V) - .5*sum(log(sigma^2 + tau_grid[i]^2)) -
+    .5*sum((y-mu)^2/(sigma^2 + tau_grid[i]^2))
+}
+
+log_p_tau <- log_p_tau - max(log_p_tau)
+p_tau <- exp(log_p_tau)
+p_tau <- p_tau/sum(p_tau)
+
+n_sims <- 5000
+tau <- sample (tau_grid, n_sims, replace=TRUE, prob=p_tau) # tau sample
+
+samples = gibbs(y, sigma, tau, n_sims)
+
+#apply(s, 2, function(x) quantile(x))
+
+# ok, now let's do some plotting
+
+
+```
 
 
 
