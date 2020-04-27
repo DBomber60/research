@@ -502,16 +502,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreedfde6d8e75310de26afa60d671f01366c364b57ctargetblankdfde6d8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/dfde6d8e75310de26afa60d671f01366c364b57c" target="_blank">dfde6d8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree988796fb31d57ece4891c2239591e6f5d25fe11etargetblank988796fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/988796fb31d57ece4891c2239591e6f5d25fe11e" target="_blank">988796f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreedfde6d8e75310de26afa60d671f01366c364b57ctargetblankdfde6d8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree988796fb31d57ece4891c2239591e6f5d25fe11etargetblank988796fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/dfde6d8e75310de26afa60d671f01366c364b57c" target="_blank">dfde6d8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/988796fb31d57ece4891c2239591e6f5d25fe11e" target="_blank">988796f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -561,6 +561,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/DBomber60/research/blob/988796fb31d57ece4891c2239591e6f5d25fe11e/analysis/hierarchical.Rmd" target="_blank">988796f</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-27
+</td>
+<td>
+yo
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/DBomber60/research/b9725dec4715db727c81272579c98cb172c125be/docs/hierarchical.html" target="_blank">b9725de</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-27
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -865,7 +899,7 @@ test
 <table>
 <thead>
 <tr class="header">
-<th align="left">drug</th>
+<th align="left">Study</th>
 <th align="right">effect</th>
 <th align="right">sigma</th>
 </tr>
@@ -960,6 +994,8 @@ p(\mu) &amp;\propto 1 \\
 p(\theta_j) &amp;\propto 1 \text{ for } j \in \{1,...,J\} \\
 \bar{y}_j &amp;\sim N(\theta_j, \sigma_j)
 \end{align}\]</span>
+<pre class="r"><code>ggplot(data, aes(Study, effect)) + geom_point()</code></pre>
+<p><img src="figure/hierarchical.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>y = effect
 
 
@@ -1010,15 +1046,26 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] knitr_1.27      workflowr_1.6.1
+ [1] knitr_1.27      forcats_0.4.0   stringr_1.4.0   dplyr_0.8.3    
+ [5] purrr_0.3.3     readr_1.3.1     tidyr_1.0.2     tibble_2.1.3   
+ [9] ggplot2_3.2.1   tidyverse_1.3.0 workflowr_1.6.1
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.3      rprojroot_1.3-2 digest_0.6.23   later_1.0.0    
- [5] R6_2.4.1        backports_1.1.5 git2r_0.26.1    magrittr_1.5   
- [9] evaluate_0.14   highr_0.8       stringi_1.4.5   rlang_0.4.4    
-[13] fs_1.3.1        promises_1.1.0  whisker_0.4     rmarkdown_2.1  
-[17] tools_3.6.2     stringr_1.4.0   glue_1.3.1      httpuv_1.5.2   
-[21] xfun_0.12       yaml_2.2.0      compiler_3.6.2  htmltools_0.4.0</code></pre>
+ [1] tidyselect_1.0.0 xfun_0.12        haven_2.2.0      lattice_0.20-38 
+ [5] colorspace_1.4-1 vctrs_0.2.2      generics_0.0.2   htmltools_0.4.0 
+ [9] yaml_2.2.0       rlang_0.4.4      later_1.0.0      pillar_1.4.3    
+[13] withr_2.1.2      glue_1.3.1       DBI_1.1.0        dbplyr_1.4.2    
+[17] modelr_0.1.5     readxl_1.3.1     lifecycle_0.1.0  munsell_0.5.0   
+[21] gtable_0.3.0     cellranger_1.1.0 rvest_0.3.5      evaluate_0.14   
+[25] labeling_0.3     httpuv_1.5.2     fansi_0.4.1      highr_0.8       
+[29] broom_0.5.4      Rcpp_1.0.3       promises_1.1.0   backports_1.1.5 
+[33] scales_1.1.0     jsonlite_1.6     farver_2.0.3     fs_1.3.1        
+[37] hms_0.5.3        digest_0.6.23    stringi_1.4.5    grid_3.6.2      
+[41] rprojroot_1.3-2  cli_2.0.1        tools_3.6.2      magrittr_1.5    
+[45] lazyeval_0.2.2   crayon_1.3.4     whisker_0.4      pkgconfig_2.0.3 
+[49] xml2_1.2.2       reprex_0.3.0     lubridate_1.7.4  rstudioapi_0.10 
+[53] assertthat_0.2.1 rmarkdown_2.1    httr_1.4.1       R6_2.4.1        
+[57] nlme_3.1-142     git2r_0.26.1     compiler_3.6.2  </code></pre>
 </div>
 </div>
 </div>
