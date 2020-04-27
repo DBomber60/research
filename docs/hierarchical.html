@@ -502,16 +502,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree2fe85d23f31ec2e30a5d7a0d9bc373d81847411btargetblank2fe85d2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/2fe85d23f31ec2e30a5d7a0d9bc373d81847411b" target="_blank">2fe85d2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreedfde6d8e75310de26afa60d671f01366c364b57ctargetblankdfde6d8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/DBomber60/research/tree/dfde6d8e75310de26afa60d671f01366c364b57c" target="_blank">dfde6d8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtree2fe85d23f31ec2e30a5d7a0d9bc373d81847411btargetblank2fe85d2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomDBomber60researchtreedfde6d8e75310de26afa60d671f01366c364b57ctargetblankdfde6d8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/2fe85d23f31ec2e30a5d7a0d9bc373d81847411b" target="_blank">2fe85d2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/DBomber60/research/tree/dfde6d8e75310de26afa60d671f01366c364b57c" target="_blank">dfde6d8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -561,6 +561,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/DBomber60/research/blob/dfde6d8e75310de26afa60d671f01366c364b57c/analysis/hierarchical.Rmd" target="_blank">dfde6d8</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-27
+</td>
+<td>
+hi
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/DBomber60/research/da38a3ddc04a1c41c2deef7f9494d654887a6e94/docs/hierarchical.html" target="_blank">da38a3d</a>
+</td>
+<td>
+DBomber60
+</td>
+<td>
+2020-04-27
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -828,8 +862,6 @@ test
 <p>Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug’s effect? What is the error of the estimate?</p>
 <p>This is a specific example of a much more general question: how do we use results of scientific research and incorporate it into our own research?</p>
 <p>To make this concrete, let us consider the following data set regarding the effect of a drug.</p>
-<pre><code>[1] &quot;yo&quot;</code></pre>
-<pre><code>[1] &quot;YO&quot;</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -900,6 +932,8 @@ test
 \end{align}\]</span>
 <pre class="r"><code>sum(effect/sigma^2)/sum(1/sigma^2) # mu_hat</code></pre>
 <pre><code>[1] 7.685617</code></pre>
+<pre class="r"><code>1/sum(1/sigma^2)</code></pre>
+<pre><code>[1] 16.58053</code></pre>
 <p>This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common <span class="math inline">\(\mu\)</span>. In statistician jargon, we would like to acknowledge the <em>unobserved heterogeneity</em> across groups (experiments).</p>
 <p>While we are uncomfortable treating the effect parameter estimated by each experiment as being exactly equal (<span class="math inline">\(\mu\)</span>), it also does not seem right to treat them as independent parameters, which would be the implied assumption under the <strong>Model 2</strong>.</p>
 <p>To further illustrate the problems with these approaches, consider the following statements:</p>
@@ -926,6 +960,33 @@ p(\mu) &amp;\propto 1 \\
 p(\theta_j) &amp;\propto 1 \text{ for } j \in \{1,...,J\} \\
 \bar{y}_j &amp;\sim N(\theta_j, \sigma_j)
 \end{align}\]</span>
+<pre class="r"><code>y = effect
+
+
+# gibbs sampler
+n_grid &lt;- 2000
+tau_grid &lt;- seq (.01, 40, length=n_grid)
+log_p_tau &lt;- rep (NA, n_grid)
+
+for (i in 1:n_grid){
+  mu &lt;- mu_hat (tau_grid[i], y, sigma)
+  V &lt;- V_mu (tau_grid[i], y, sigma)
+  log_p_tau[i] = .5*log(V) - .5*sum(log(sigma^2 + tau_grid[i]^2)) -
+    .5*sum((y-mu)^2/(sigma^2 + tau_grid[i]^2))
+}
+
+log_p_tau &lt;- log_p_tau - max(log_p_tau)
+p_tau &lt;- exp(log_p_tau)
+p_tau &lt;- p_tau/sum(p_tau)
+
+n_sims &lt;- 5000
+tau &lt;- sample (tau_grid, n_sims, replace=TRUE, prob=p_tau) # tau sample
+
+samples = gibbs(y, sigma, tau, n_sims)
+
+#apply(s, 2, function(x) quantile(x))
+
+# ok, now let&#39;s do some plotting</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
