@@ -18,7 +18,7 @@ source('code/sampler.R') # for deploy
 
 Suppose we have results from several experiments on the effect of a certain drug. How should we use this data to estimate the drug's effect? What is the error of the estimate?
 
-This is a specific example of a much more general question: how do we use results of scientific research and incorporate it into our own research?
+This is a specific example of a much more general question: how do we incorporate the results of scientific research into our own research?
 
 To make this concrete, let us consider the following data set regarding the effect of a drug.
 
@@ -36,7 +36,7 @@ attach(data)
 
 ### Option A
 
-Choose the best study. Clearly this is not optimal since you are not making use of the informatin you have; however, very smart people choose this option all the time.
+Choose the best study. Clearly this is not optimal since you are not making use of the information you have; however, very smart people choose this option all the time.
 
 ### Option B
 
@@ -49,7 +49,7 @@ Our data consists of $(\bar{y}_j, \sigma_j)$ for $j \in 1,...,J$, where $\bar{y}
 \text{Model 2: }\bar{y}_j &\underset {ind}{\sim} N(\theta_j, \sigma_j)
 \end{align}
 
-Conceptually, **Model 1** assumes that each experiment provides an independent estimate of the drug's *true* effect, $\mu$. Under this model, we can obtain an estimator $\hat{\mu}$ by maximizing the likelihood of our data.
+Conceptually, **Model 1** assumes that each experiment provides an independent estimate of the drug's *true* effect, $\mu$. Under this model, we can obtain an estimator $\hat{\mu}$ by maximizing the likelihood of our data. The variance can be derived similarly, leading to:
 
 \begin{align}
 \hat{\mu} &= \underset{\mu}{\arg\max} \prod_j (2 \pi \sigma_j^2)^{-1/2} \exp \bigg(- \frac{( \bar{y}_j -\mu )^2 }{2 \sigma_j^2} \bigg) \\
@@ -57,8 +57,8 @@ Conceptually, **Model 1** assumes that each experiment provides an independent e
 \end{align}
 
 ```{r}
-sum(effect/sigma^2)/sum(1/sigma^2) # mu_hat
-1/sum(1/sigma^2)
+mu_hat_pooled = sum(effect/sigma^2)/sum(1/sigma^2) # 7.7
+sigma_hat_pooled = (1/sum(1/sigma^2))^.5 # 4.1
 ```
 
 This seems okay. However, because the experimental conditions, for example the age or other attributes of the test subjects, length of the experiment and so on, are likely to affect the results, it does not feel right to assume the are no differences at all between the groups - an assumption we make by assuming a common $\mu$. In statistician jargon, we would like to acknowledge the *unobserved heterogeneity* across groups (experiments).
@@ -67,8 +67,8 @@ While we are uncomfortable treating the effect parameter estimated by each exper
 
 To further illustrate the problems with these approaches, consider the following statements:
 
-1. The probability that the true effect in A is greater than $28.4$ is $1/2$ (implied by **Model 1**).
-2. The probability that the true effect in A is less than $7.7$ is $1/2$ (implied by **Model 2**).
+1. The probability that the true effect in A is less than $7.7$ is $1/2$ (implied by **Model 1**).
+2. The probability that the true effect in A is greater than $28.4$ is $1/2$ (implied by **Model 2**).
 
 Is there a middle ground?
 
@@ -76,7 +76,7 @@ Is there a middle ground?
 
 Hierarchical modelling! 
 
-The idea is to break the model down into smaller easier understood pieces (levels), which when put together describes the joint distribution of all data and parameters. In this case, we can think about study level parameters on one level (i.e., we can denote $\theta_j$ as the true effect of study $j$) and the the sampling distribution of the study-specific data on another level. Futhermore, we can assume the study parameters are a sample from an underlying population distribution, and the variance of this population distribution, which is estimated from the data, determines how much the parameters of the sampling distribution are shrunk towards the common mean.
+The idea is to break the model down into smaller, easier understood pieces (levels). When put together, these levels describe the joint distribution of data and parameters in a more realistic way. In this case, we can think about study level parameters on one level (i.e., we can denote $\theta_j$ as the true effect of study $j$) and the the sampling distribution of the study-specific data on another level. Furthermore, we can assume the study parameters are a sample from an underlying population distribution, and the variance of this population distribution, which is estimated from the data, determines how much the parameters of the sampling distribution are shrunk towards the common mean.
 
 \begin{align}
 \theta_j &\sim N(\mu, \tau) \\
@@ -86,22 +86,9 @@ The idea is to break the model down into smaller easier understood pieces (level
 In order to make this hierarchical model a Bayesian hierarchical model, we also specify a prior distribution for the **hyperparameters**, $p(\mu, \tau)$. A key conceptual difference between this model setup and those in Option B is the treatment of parameters $(\theta_1,...,\theta_J,\mu,\tau)$ as random variables. This is the defining characteristic of Bayesian statistics. Despite the conceptual newness, this framework subsumes the previous two.
 
 
-\begin{align}
-p(\mu) &\propto 1 \\
-\bar{y}_j &\sim N(\mu, \sigma_j)
-\end{align}
-
-\begin{align}
-p(\theta_j) &\propto 1 \text{ for } j \in \{1,...,J\} \\
-\bar{y}_j &\sim N(\theta_j, \sigma_j)
-\end{align}
-
-```{r}
-
-ggplot(data, aes(Study, effect)) + geom_point()
+```{r echo=FALSE}
 
 y = effect
-
 
 # gibbs sampler
 n_grid <- 2000
@@ -123,13 +110,71 @@ n_sims <- 5000
 tau <- sample (tau_grid, n_sims, replace=TRUE, prob=p_tau) # tau sample
 
 samples = gibbs(y, sigma, tau, n_sims)
+```
 
-#apply(s, 2, function(x) quantile(x))
 
+```{r echo=F, message=F}
 # ok, now let's do some plotting
 
+plotdf = data.frame(Study = data$Study,
+                    effect = apply(samples[200:n_sims,2:9],2,mean),
+                    sigma = apply(samples[200:n_sims,2:9],2,sd))
 
+data$model = "quoted"
+
+plotdf$model = "posterior"
+
+plotdf = rbind(data, plotdf)
+
+meta = data.frame("mu", mean(samples[,1]), sd(samples[,1]), 'posterior')
+names(meta) = names(plotdf)
+plotdf = rbind(plotdf, meta)
+
+#plotdf = rbind(plotdf, meta)
+
+pd <- position_dodge(0.5) # move them .05 to the left and right
+ggplot(plotdf, aes(x=Study, y=effect, color = model)) + geom_point() +
+  geom_errorbar(aes(ymin=effect - 2 * sigma, ymax= effect + 2 * sigma), width=.1, position=pd) +
+  geom_line() + theme_bw() +
+  ylab("effect estimates") +
+  xlab("Study") +
+  xlab("") + geom_hline(yintercept= mu_hat_pooled, color = "cornflowerblue", size=.6) +
+  geom_hline(yintercept= mu_hat_pooled + 2 * sigma_hat_pooled, color = "cornflowerblue", size=.6, linetype = "dashed") +
+  geom_hline(yintercept= mu_hat_pooled - 2* sigma_hat_pooled, color = "cornflowerblue", size=.6, linetype = "dashed") +
+  ggtitle("Model Output - 68% Confidence Intervals")
 ```
+
+The solid blue line represents the fixed $\mu$ of **Model 1**, along with its $95\%$ confidence band. The red lines are our estimate from the hierarchical model of the true study effects, $\theta_i$. Although the $\mu$ confidence interval corresponds pretty well with the blue lines, it is slightly wider.
+
+
+## Research application
+
+Biobot Analytics previously measured sewage concentrations of analytes linked with opioid usage to track overdoses and help inform policy to mitigate this public health crisis. Now, they measure the concentration of the coronavirus in sewage and use this data to estimate the number of infected people, [here is their preprint](https://www.medrxiv.org/content/10.1101/2020.04.05.20051540v1).
+
+*Wastewater surveillance may represent a complementary approach to measure the presence and even prevalence of infectious diseases when the capacity for clinical testing is limited.*
+
+How are they estimating the number of infected people? This equation:
+
+\begin{align*}
+    i_j &= \frac{\text{total virus copies at }WWTP_j \text{ per day}}{\text{expected virus copies per infected person per day}} \\
+    &= \frac{\text{sample virus conc.$_j$ (copies/mL)} \times \text{flow (mL/day)}}{\underbrace {\text{expected virus copies per infected stool (copies/mL)}}_{V} \times \text{stool (mL/day/person)}} \\
+    &= \frac {s_j f}{V p}
+\end{align*}
+
+How do we quantify the uncertainty in this estimate? Each term here is subject to a **lot** of variability. The popular opinion is that $V$ is the most uncertain term. Fortunately, scientists are doing research on this variable at a crazy speed. [Here is one example](https://www.ncbi.nlm.nih.gov/pubmed/32251668). How to synthesize all of this work and use it to estimate uncertainty in $i_j$? The exact method I just showed with the slight added complexity that $V$ is not $\sim N$.
+
+Once you have data across many wastewater treatment plants, how can you combine all of this data? Hierarchical model. Suppose $\theta$ is the true infection rate across the US and $K$ is a mapping matrix. 
+
+\begin{align*}
+\theta &\sim p(\cdot) \\
+i_j | \theta, \epsilon_j &\sim p(f(K(\theta), \epsilon_j)
+
+\end{align*}
+
+
+
+## Questions.
+
 
 
 

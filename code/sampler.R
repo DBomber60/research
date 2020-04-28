@@ -20,7 +20,6 @@ gibbs = function(y, sigma, tau, n_sims) {
     theta_sd <- sqrt(1/(1/tau[i]^2 + 1/sigma^2))
     samples[i,2:(J+1)] <- rnorm (J, theta_mean, theta_sd)
   }
-
   return(samples)
 }
 
